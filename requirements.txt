@@ -14,11 +14,9 @@ idna==2.0
 ipython==7.5.0
 ipython-genutils==0.2.0
 jedi==0.13.3
-Jinja2==2.8
 lxml==3.5.0
 MarkupSafe==0.23
 oauthlib==1.0.3
-Pillow==3.1.2
 plainbox==0.25
 prompt-toolkit==2.0.9
 ptyprocess==0.6.0
@@ -29,9 +27,6 @@ Pygments==2.3.1
 PyJWT==1.3.0
 pyparsing==2.0.3
 pytz==2019.2
-pyxdg==0.25
 reportlab==3.3.0
-requests==2.9.1
 sqlparse==0.3.0
-urllib3==1.13.1
 XlsxWriter==0.7.3
