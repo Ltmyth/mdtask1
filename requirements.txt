@@ -18,11 +18,6 @@ Jinja2==2.8
 lxml==3.5.0
 MarkupSafe==0.23
 oauthlib==1.0.3
-onboard==1.2.0
-padme==1.1.1
-parso==0.4.0
-pexpect==4.7.0
-pickleshare==0.7.5
 Pillow==3.1.2
 plainbox==0.25
 prompt-toolkit==2.0.9
