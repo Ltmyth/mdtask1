@@ -1,1 +1,1 @@
-web: gunicorn app.wsgi --log-file -
+web: gunicorn mdtask1.wsgi --log-file -
