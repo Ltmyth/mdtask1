@@ -1,0 +1,26 @@
+.rt-al{
+	text-align:right;
+}
+.ct-al{
+	text-align: center;
+}
+.g-bg{
+    background:#ecf0f1;
+}
+
+.b-bg{
+	background:black;
+	color:white;
+}
+
+.lr-mg10{
+	margin:0% 10% 0% 10%;
+}
+
+.op8{
+	opacity:0.8;
+}
+
+.l-mg10{
+	margin-left:10%;
+}
