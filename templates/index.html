@@ -10,15 +10,15 @@
     <link rel="stylesheet" href="{% static 'css/app.css' %}">
 </head>
 <nav id="nav" class="navbar navbar-expand-lg navbar-light bg-light">
-  	<a class="navbar-brand" href="#"><b style="margin:0% 5% 0% 40%;font-size:125%;">Medium</b> | Data Science</a>
+  	<a class="navbar-brand" href="#"><b class="l-mn">Medium</b> | Data Science</a>
   	
 
- 	<div style="margin:0% 5% 0% 45%;" class="collapse navbar-collapse">
+ 	<div  class="collapse navbar-collapse r-mn">
     
 	    <form class="form-inline my-2 my-lg-0">
 	    	<a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"><small>Become a member</small></a>
 	    	<a class="nav-link" href="#" tabindex="-1"><small style="color:green;">Sign in</small></a>
-	     	<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Get Started</button>
+	     	<button style="float:right;" class="btn btn-outline-success my-2 my-sm-0" type="submit">Get Started</button>
 	    </form>
 	</div>
 </nav>
@@ -28,18 +28,22 @@
 		<div class="row">
 			<div class="container col-lg-7">
 				<br>
-				<h1>
-					Marketing Channel Attribution with <br>
-					Markov Chains in Python
-				</h1>
+				<div class="row">
+					<h1>
+						Marketing Channel Attribution with <br>
+						Markov Chains in Python
+					</h1>
+				</div>
 				<br>
-
-				<img style="width:7%;" src="{% static '/imgs/mh.png' %}" alt="Image No Deya">
-				&nbsp;
-				<small>Morten Hegewald</small>
-				<button class="btn btn-sm btn-outline-dark"><small>Follow</small></button>
-				<br>				
-				<small style="margin-left:8%;">Mar 11 . 11 min read &nbsp;<b class="op8"> &#9733;</b></small>					
+				<div class="row">
+					<img class="float-left pp" src="{% static '/imgs/mh.png' %}" alt="Image No Deya">
+					<small class="lr-mg5">
+						Morten Hegewald<br>
+						Mar 11 . 11 min read<b class="op8"> &#9733;</b>
+					</small>
+					<div style="height:35px;padding:1%;" class="btn btn-outline-dark ct-al">Follow</div>
+				</div>
+				<br>					
 			</div>
 		</div>
 		
@@ -47,7 +51,7 @@
 
 		<div class="row">
 			<div class="col-md-10 container">
-				<img style="width:95%;" src="{% static '/imgs/hero.jpg' %}" alt="Image No Deya">	
+				<img id="hero_img"  src="{% static '/imgs/hero.jpg' %}" alt="Image No Deya">	
 			</div>			
 		</div>
 
@@ -118,8 +122,8 @@
 
 		<div class="col-lg-10">
 			<div class="row">
-				<div class="col-md-6 container">
-					<img style="width:100%;height:35vh;" src="{% static '/imgs/hph.png' %}" alt="Image No Deya">	
+				<div class="col-md-6 lr-mg5">
+					<img id="d1_img" src="{% static '/imgs/hph.png' %}" alt="Image No Deya">	
 				</div>
 				<div class="col-md-4">
 					<h4>DAY 1:</h4>
@@ -176,7 +180,7 @@
 				<br>		
 			</div>
 			<div class="col-lg-12 container ct-al">
-				<img style="width:95%;height:35vh;" src="{% static '/imgs/atts.png' %}" alt="Image No Deya">
+				<img id="atts_img" src="{% static '/imgs/atts.png' %}" alt="Image No Deya">
 				<br>
 				<small class="op8">3 standard attribution models</small>
 			</div>
@@ -345,7 +349,7 @@
 		<br>
 
 		<div class="col-lg-9 container ct-al">
-			<img style="width:100%;" src="{% static '/imgs/ls.png' %}" alt="Image No Deya">
+			<img class="img" src="{% static '/imgs/ls.png' %}" alt="Image No Deya">
 			<br><br>
 			<small class="op8">Sample of our dataset</small>
 		</div>
@@ -445,16 +449,14 @@
 				<br><br><br>
 
 				<div class="well g-bg container">
-					<h5>
-						<p>
-							# Select relevant columns<br>
-							df = df[['Path', 'Conversion']]<br><br>
-							# Sum conversions by Path<br>
-							df = df.groupby('Path').sum().reset_index()<br><br>
-							# Write DF to CSV to be executed in R<br>
-							df.to_csv('Paths.csv', index=False)<br>
-						</p>	
-					</h5>
+					<p>
+						# Select relevant columns
+						df = df[['Path', 'Conversion']]<br>
+						# Sum conversions by Path
+						df = df.groupby('Path').sum().reset_index()<br>
+						# Write DF to CSV to be executed in R
+						df.to_csv('Paths.csv', index=False)
+					</p>
 					<br>
 				</div>
 
@@ -485,31 +487,29 @@
 
 				<div class="well g-bg container">
 					<br>
-					<h5>
-						<p>
-							# Read in the necessary libraries<br>
-							if(!require(ChannelAttribution)){<br>
-							  install.packages("ChannelAttribution")<br>
-							  library(ChannelAttribution)<br>
-							}<br><br>
-							# Set Working Directory<br>
-							setwd <- setwd('C:/Users/Morten/PycharmProjects/Markov Chain <br>
-							Attribution Modeling')<br><br>
-							# Read in our CSV file outputted by the python script<br>
-							df <- read.csv('Paths.csv')<br><br>
-							# Select only the necessary columns<br>
-							df <- df[c(1,2)]<br><br>
-							# Run the Markov Model function<br>
-							M <- markov_model(df, 'Path', var_value = 'Conversion', var_conv = <br>
-							'Conversion', sep = '>', order=1, out_more = TRUE)<br><br>
-							# Output the model output as a csv file, to be read back into Python<br>
-							write.csv(M$result, file = "Markov - Output - Conversion values.csv",<br>
-							row.names=FALSE)<br><br>
-							# Output the transition matrix as well, for visualization purposes<br>
-							write.csv(M$transition_matrix, file = "Markov - Output - Transition <br>
-							matrix.csv", row.names=FALSE)<br>
-						</p>	
-					</h5>
+					<p>
+						# Read in the necessary libraries<br>
+						if(!require(ChannelAttribution)){<br>
+							install.packages("ChannelAttribution")<br>
+							library(ChannelAttribution)<br>
+						}<br><br>
+						# Set Working Directory<br>
+						setwd <- setwd('C:/Users/Morten/PycharmProjects/Markov Chain <br>
+						Attribution Modeling')<br><br>
+						# Read in our CSV file outputted by the python script<br>
+						df <- read.csv('Paths.csv')<br><br>
+						# Select only the necessary columns<br>
+						df <- df[c(1,2)]<br><br>
+						# Run the Markov Model function<br>
+						M <- markov_model(df, 'Path', var_value = 'Conversion', var_conv = <br>
+						'Conversion', sep = '>', order=1, out_more = TRUE)<br><br>
+						# Output the model output as a csv file, to be read back into Python<br>
+						write.csv(M$result, file = "Markov - Output - Conversion values.csv",<br>
+						row.names=FALSE)<br><br>
+						# Output the transition matrix as well, for visualization purposes<br>
+						write.csv(M$transition_matrix, file = "Markov - Output - Transition <br>
+						matrix.csv", row.names=FALSE)<br>
+					</p>
 					<br>
 				</div>
 
@@ -560,38 +560,36 @@
 
 				<div class="well g-bg container">
 					<br>
-					<h5>
-						<p>
-							# First Touch Attribution<br>
-							df['First Touch'] = df['Path'].map(lambda x: x.split(' > ')[0])<br>
-							df_ft = pd.DataFrame()<br>
-							df_ft['Channel'] = df['First Touch']<br>
-							df_ft['Attribution'] = 'First Touch'<br>
-							df_ft['Conversion'] = 1<br>
-							df_ft = df_ft.groupby(['Channel', 'Attribution']).sum().reset_index()<br><br>
+					<p>
+						# First Touch Attribution<br>
+						df['First Touch'] = df['Path'].map(lambda x: x.split(' > ')[0])<br>
+						df_ft = pd.DataFrame()<br>
+						df_ft['Channel'] = df['First Touch']<br>
+						df_ft['Attribution'] = 'First Touch'<br>
+						df_ft['Conversion'] = 1<br>
+						df_ft = df_ft.groupby(['Channel', 'Attribution']).sum().reset_index()<br><br>
 
-							# Last Touch Attribution<br>
-							df['Last Touch'] = df['Path'].map(lambda x: x.split(' > ')[-1])<br>
-							df_lt = pd.DataFrame()<br>
-							df_lt['Channel'] = df['Last Touch']<br>
-							df_lt['Attribution'] = 'Last Touch'<br>
-							df_lt['Conversion'] = 1<br>
-							df_lt = df_lt.groupby(['Channel', 'Attribution']).sum().reset_index()<br><br>
+						# Last Touch Attribution<br>
+						df['Last Touch'] = df['Path'].map(lambda x: x.split(' > ')[-1])<br>
+						df_lt = pd.DataFrame()<br>
+						df_lt['Channel'] = df['Last Touch']<br>
+						df_lt['Attribution'] = 'Last Touch'<br>
+						df_lt['Conversion'] = 1<br>
+						df_lt = df_lt.groupby(['Channel', 'Attribution']).sum().reset_index()<br><br>
 
-							# Linear Attribution<br>
-							channel = []<br>
-							conversion = []<br>
-							for i in df.index:<br>
-							&nbsp;&nbsp;&nbsp;&nbsp;for j in df.at[i, 'Path'].split(' > '):<br>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;channel.append(j)<br>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;conversion.append(1/len(df.at[i, 'Path'].split(' > ')))<br>
-							lin_att_df = pd.DataFrame()<br>
-							lin_att_df['Channel'] = channel<br>
-							lin_att_df['Attribution'] = 'Linear<br>
-							lin_att_df['Conversion'] = conversion<br>
-							lin_att_df = lin_att_df.groupby(['Channel', 'Attribution']).sum().reset_index()<br>
-						</p>	
-					</h5>
+						# Linear Attribution<br>
+						channel = []<br>
+						conversion = []<br>
+						for i in df.index:<br>
+						&nbsp;&nbsp;&nbsp;&nbsp;for j in df.at[i, 'Path'].split(' > '):<br>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;channel.append(j)<br>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;conversion.append(1/len(df.at[i, 'Path'].split(' > ')))<br>
+						lin_att_df = pd.DataFrame()<br>
+						lin_att_df['Channel'] = channel<br>
+						lin_att_df['Attribution'] = 'Linear<br>
+						lin_att_df['Conversion'] = conversion<br>
+						lin_att_df = lin_att_df.groupby(['Channel', 'Attribution']).sum().reset_index()<br>
+					</p>
 					<br>
 				</div>
 			</div>			
@@ -611,21 +609,19 @@
 		<div class="row">
 			<div class="well g-bg col-md-6 container">
 				<br>
-				<h5>
-					<p>
-						# Concatenate the four data frames to a single data frame<br>
-						df_total_attr = pd.concat([df_ft, df_lt, lin_att_df, markov])<br>
-						df_total_attr['Channel'] = df_total_attr['Channel'].astype(int)<br>
-						df_total_attr.sort_values(by='Channel', ascending=True, inplace=True)<br><br>
+				<p>
+					# Concatenate the four data frames to a single data frame<br>
+					df_total_attr = pd.concat([df_ft, df_lt, lin_att_df, markov])<br>
+					df_total_attr['Channel'] = df_total_attr['Channel'].astype(int)<br>
+					df_total_attr.sort_values(by='Channel', ascending=True, inplace=True)<br><br>
 
-						# Visualize the attributions<br>
-						sns.set_style("whitegrid")<br>
-						plt.rc('legend', fontsize=15)<br>
-						fig, ax = plt.subplots(figsize=(16, 10))<br>
-						sns.barplot(x='Channel', y='Conversion', hue='Attribution', data=df_total_attr)<br><
-						plt.show()<br>
-					</p>	
-				</h5>
+					# Visualize the attributions<br>
+					sns.set_style("whitegrid")<br>
+					plt.rc('legend', fontsize=15)<br>
+					fig, ax = plt.subplots(figsize=(16, 10))<br>
+					sns.barplot(x='Channel', y='Conversion', hue='Attribution', data=df_total_attr)<br><
+					plt.show()<br>
+				</p>
 				<br>
 			</div>			
 		</div>
@@ -687,57 +683,55 @@
 		<div class="row">
 			<div class="well g-bg col-md-6 container">
 				<br>
-				<h5>
-					<p>
-						#<i> Read in transition matrix CSV</i><br>
-						trans_prob = pd.read_csv('Markov - Output - Transition matrix.csv')
-						<br><br>
+				<p>
+					#<i> Read in transition matrix CSV</i><br>
+					trans_prob = pd.read_csv('Markov - Output - Transition matrix.csv')
+					<br><br>
 
-						#<i>Convert data to floats</i><br>
-						trans_prob ['transition_probability'] = trans_prob ['transition_probability'].astype(float)
-						<br><br>
+					#<i>Convert data to floats</i><br>
+					trans_prob ['transition_probability'] = trans_prob ['transition_probability'].astype(float)
+					<br><br>
 
-						# <i>Convert start and conversion event to numeric values so we can sort and iterate through
-						</i><br>
-						trans_prob .replace('(start)', '0', inplace=True)<br>
-						trans_prob .replace('(conversion)', '21', inplace=True)<br>
-						<br><br>
+					# <i>Convert start and conversion event to numeric values so we can sort and iterate through
+					</i><br>
+					trans_prob .replace('(start)', '0', inplace=True)<br>
+					trans_prob .replace('(conversion)', '21', inplace=True)<br>
+					<br><br>
 
-						# Get unique origin channels<br>
-						channel_from_unique = trans_prob ['channel_from'].unique().tolist()<br>
-						channel_from_unique.sort(key=float)<br><br>
+					# Get unique origin channels<br>
+					channel_from_unique = trans_prob ['channel_from'].unique().tolist()<br>
+					channel_from_unique.sort(key=float)<br><br>
 
-						# Create new matrix with origin and destination channels as columns<br>
-						and index<br>
-						trans_matrix = pd.DataFrame(columns=channel_to_unique, <br>
-						index=channel_from_unique)<br><br>
+					# Create new matrix with origin and destination channels as columns<br>
+					and index<br>
+					trans_matrix = pd.DataFrame(columns=channel_to_unique, <br>
+					index=channel_from_unique)<br><br>
 
-						# Assign the probabilities to the corresponding cells in our <br>
-						transition matrix<br>
-						for f in channel_from_unique:<br>
-						&nbsp;&nbsp;&nbsp;&nbsp;for t in channel_to_unique:<br>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x = trans_prob [(trans_prob ['channel_from'] == f) & <br>
-						(trans_prob ['channel_to'] == t)]<br>
-						&nbsp;&nbsp;&nbsp;&nbsp;prob = x['transition_probability'].values<br>
-						&nbsp;&nbsp;&nbsp;&nbsp;if prob.size > 0:<br>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;trans_matrix[t][f] = prob[0].values<br>
-						&nbsp;&nbsp;&nbsp;&nbsp;else:<br>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;trans_matrix[t][f] = 0<br><br>
+					# Assign the probabilities to the corresponding cells in our <br>
+					transition matrix<br>
+					for f in channel_from_unique:<br>
+					&nbsp;&nbsp;&nbsp;&nbsp;for t in channel_to_unique:<br>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x = trans_prob [(trans_prob ['channel_from'] == f) & <br>
+					(trans_prob ['channel_to'] == t)]<br>
+					&nbsp;&nbsp;&nbsp;&nbsp;prob = x['transition_probability'].values<br>
+					&nbsp;&nbsp;&nbsp;&nbsp;if prob.size > 0:<br>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;trans_matrix[t][f] = prob[0].values<br>
+					&nbsp;&nbsp;&nbsp;&nbsp;else:<br>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;trans_matrix[t][f] = 0<br><br>
 
-						# Convert all probabilities to floats<br>
-						trans_matrix = trans_matrix.apply(pd.to_numeric)<br><br>
+					# Convert all probabilities to floats<br>
+					trans_matrix = trans_matrix.apply(pd.to_numeric)<br><br>
 
-						# Rename our start and conversion events<br>
-						trans_matrix.rename(index={'0': 'Start'}, inplace=True)<br>
-						trans_matrix.rename(columns={'21': 'Conversion'}, inplace=True)s<br><br>
+					# Rename our start and conversion events<br>
+					trans_matrix.rename(index={'0': 'Start'}, inplace=True)<br>
+					trans_matrix.rename(columns={'21': 'Conversion'}, inplace=True)s<br><br>
 
-						# Visualize this transition matrix in a heatmap<br>
-						sns.set_style("whitegrid")<br>
-						fig, ax = plt.subplots(figsize=(22, 12))<br>
-						sns.heatmap(trans_matrix, cmap="RdBu_r")<br>
-						plt.show()<br>
-					</p>	
-				</h5>
+					# Visualize this transition matrix in a heatmap<br>
+					sns.set_style("whitegrid")<br>
+					fig, ax = plt.subplots(figsize=(22, 12))<br>
+					sns.heatmap(trans_matrix, cmap="RdBu_r")<br>
+					plt.show()<br>
+				</p>
 				<br>
 			</div>			
 		</div>
@@ -826,15 +820,19 @@
 		<div class="row">
 			<div class="col-md-6 container">
 				<hr>
-					<small>WRITTEN BY</small>
+					
 					<br>
-					<b>Morten Hegewald</b>
+					<img class="float-left" style="width:10%;border-radius:50%;" src="{% static '/imgs/mh.png' %}" alt="Image No Deya">
+					<big class="lr-mg5">
+						<small class="op8">WRITTEN BY</small><br>
+						<b class="lr-mg5">Morten Hegewald</b>
+					</big>
+					<div style="height:35px;padding:1%;" class="btn btn-outline-dark float-right">Follow</div>
+					<br><br>
 				<hr>
 
-				<div class="btn btn-outline-success btn-md form-control">
-					<br>
+				<div style="height:8vh;padding:2%;pointer-events: none;margin-bottom:5%;" class="btn btn-outline-success btn-md form-control ct-al">
 					<small>See responses (3)</small>
-					<br><br>
 				</div>
 			</div>
 		</div>
@@ -845,59 +843,121 @@
 			<div class="container">
 				<div class="col-md-12">
 					<br>
-					<h5><b>More From Medium</b></h5>
-					<hr>
+					<div class="row">
+						<h5><b>More From Medium</b></h5>
+
+						<hr class="full">
+					</div>
+					
 					<div class="row">
 						<div class="col-sm-4">
-							<small>Related reads</small>
-							<br><br>
-							<img style="width:95%;" src="{% static '/imgs/mkt.png' %}" alt="Image No Deya">
-							<br>
-							<h5>
-								<p>
-									
-									Marketing Mix Modelling with <br>
-									Bayesian Regression
-									
-								</p>
-							</h5>
+							<div class="row">
+								<br><br>
+								<small>Related reads</small>
+								<br>
+							</div>
 							
-							<section>
-								<img style="width:20%;border-radius:50%;margin-top:10%;" src="{% static '/imgs/mh.png' %}" alt="Image No Deya">
-								&nbsp;
-								<p>
+							<br>
+
+							<div class="row op9">
+								<img style="width:95%;" src="{% static '/imgs/mkt.png' %}" alt="Image No Deya">
+								<br>
+							</div>
+
+							<br>
+
+							<div class="row">
+								<h5>
+									<p>
+										
+										Marketing Mix Modelling with <br>
+										Bayesian Regression
+										
+									</p>
+								</h5>
+							</div>
+
+							<div class="row">
+								<img class="float-left" style="width:10%;border-radius:50%;" src="{% static '/imgs/mh.png' %}" alt="Image No Deya">
+								<small class="lr-mg5">
 									Tristan Ganry in Toward...<br>
-									Sep 29, 2018 · 5 min read
-								</p>
-								&nbsp;
+									Sep 29, 2018 · 5 min read <b class="op8"> &#9733;</b>
+								</small>
 								<img style="width:5%;" src="{% static '/imgs/clapping.svg' %}" alt="Image No Deya">
-							</section>
+							</div>
+							<br>
+						</div>
+
+						<div class="col-sm-4">
+							<div class="row">
+								<br><br>
+								<small>Related reads</small>
+								<br>
+							</div>
 							
 							<br>
-						</div>
-						<div class="col-sm-4">
-							<small>Related reads</small>
-							<br><br>
-							<img style="width:95%;" src="{% static '/imgs/pf.png' %}" alt="Image No Deya">
-							<h5>
-								<p>
-									Professor turned Data Scientist: <br>
-									Why Dr. Guido Maretto left <br>
-									academia for the startup life
-								</p>
-							</h5>
+
+							<div class="row op9">
+								<img style="width:95%;" src="{% static '/imgs/pf.png' %}" alt="Image No Deya">
+								<br>
+							</div>
+
+							<br>
+
+							<div class="row">
+								<h5>
+									<p>
+										Professor turned Data Scientist: <br>
+										Why Dr. Guido Maretto left <br>
+										academia for the startup life
+									</p>
+								</h5>
+							</div>
+
+							<div class="row">
+								<img class="float-left" style="width:10%;border-radius:50%;" src="{% static '/imgs/mh.png' %}" alt="Image No Deya">
+								<small class="lr-mg5">
+									Tristan Ganry in Toward...<br>
+									Sep 29, 2018 · 5 min read <b class="op8"> &#9733;</b>
+								</small>
+								<img style="width:5%;" src="{% static '/imgs/clapping.svg' %}" alt="Image No Deya">
+							</div>
 							<br>
 						</div>
+
 						<div class="col-sm-4">
-							<small>Related reads</small>
-							<br><br>
-							<img style="width:95%;" src="{% static '/imgs/lan.png' %}" alt="Image No Deya">
-							<h5>
-								<p>
-									A1 101: Understanding<br>
-									Customer Churn Management
-								</p>
-							</h5>
+							<div class="row">
+								<br><br>
+								<small>Related reads</small>
+								<br>
+							</div>
+							
+							<br>
+
+							<div class="row op9">
+								<img style="width:95%;" src="{% static '/imgs/lan.png' %}" alt="Image No Deya">
+								<br>
+							</div>
+
+							<br>
+
+							<div class="row">
+								<h5>
+									<p>
+										A1 101: Understanding<br>
+										Customer Churn Management
+									</p>
+								</h5>
+							</div>
+
+							<div class="row">
+								<img class="float-left" style="width:10%;border-radius:50%;" src="{% static '/imgs/mh.png' %}" alt="Image No Deya">
+								<small class="lr-mg5">
+									Tristan Ganry in Toward...<br>
+									Sep 29, 2018 · 5 min read <b class="op8"> &#9733;</b>
+								</small>
+								<img style="width:5%;" src="{% static '/imgs/clapping.svg' %}" alt="Image No Deya">
+							</div>
 							<br>
 						</div>						
 					</div>
@@ -905,7 +965,7 @@
 			</div>	
 		</div>
 
-		<div class="row b-bg">
+		<div id="knee" class="row b-bg">
 			<div class="container">
 				<div class="col-md-12">
 					<div class="row">
@@ -916,10 +976,10 @@
 									Discover Medium
 								</b>
 							</h5>
-							<br>
 							<h6>
 								<p class="op8">
-									Welcome to a place where words matter. On Medium, smart voices and original ideas take center stage - with no ads in sight. Watch
+									Welcome to a place where words matter. On Medium, smart voices and original ideas take center stage - with no ads in sight.
+									<a href="#"><u>Watch</u></a>
 								</p>
 							</h6>
 						</div>
@@ -930,10 +990,9 @@
 									Make Medium yours
 								</b>
 							</h5>
-							<br>
 							<h6>
 								<p class="op8">
-									Follow all the topics you care about, and we’ll deliver the best stories for you to your homepage and inbox. Explore
+									Follow all the topics you care about, and we’ll deliver the best stories for you to your homepage and inbox. <a href="#"><u>Explore</u></a> 
 								</p>
 							</h6>
 						</div>
@@ -944,37 +1003,38 @@
 									Become a member
 								</b>
 							</h5>
-							<br>
 							<h6>
 								<p class="op8">
-									Get unlimited access to the best stories on Medium — and support writers while you’re at it. Just $5/month. Upgrade
+									Get unlimited access to the best stories on Medium — and support writers while you’re at it. Just $5/month.
+									<a href="#"><u>Upgrade</u></a>
 								</p>
 							</h6>
-						</div>						
-					</div>
-
-					<hr>
-
-					<div class="row">
-						<div class="col-sm-6">
-							<br>
-							<h4>
-								<b>
-									Medium
-								</b>
-							</h4>
 						</div>
-						<div class="col-sm-6 rt-al">
-							<br>
-							<small>About</small>
-							<small class="lr-mg10">Help</small>
-							<small>Legal</small>
-						</div>						
+						
+						<hr style="border:0.5px solid;width:100%;margin:5% 0% 5% 0%;" class="wt">
 					</div>
-					<br><br><br>
-
 				</div>					
 			</div>
+			<br>
+		</div>
+		
+		<div id="foot" class="row b-bg">			
+			<div class="container">
+				<div class="col-lg-12">
+					<div class="col-sm-3 lt-ft">
+						<h4>
+							<b>
+								<a href="#">Medium</a>
+							</b>
+						</h4>
+					</div>
+					<div class="col-sm-3 rt-ft op8">
+						<a href="#"><small>About</small></a>
+						<a href="#"><small class="lr-mg10">Help</small></a>
+						<a href="#"><small>Legal</small></a>
+					</div>
+				</div>
+			</div>				
 		</div>
 
 		
